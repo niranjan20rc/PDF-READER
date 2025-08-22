@@ -117,7 +117,12 @@ export default function PDFViewer() {
       )}
 
       {file && (
-        <div style={styles.viewerContainer}>
+        <div style={{ ...styles.viewerContainer, position: "relative" }}>
+          {/* Close PDF button top-right */}
+          <button onClick={closePDF} style={styles.closeButtonTop}>
+            ❌
+          </button>
+
           {/* Top controls */}
           <div style={styles.topControls}>
             <p style={styles.fileName}>File: {file}</p>
@@ -138,9 +143,6 @@ export default function PDFViewer() {
                 style={styles.navButton}
               >
                 Next ➡
-              </button>
-              <button onClick={closePDF} style={styles.closeButton}>
-                ❌ Close PDF
               </button>
             </div>
           </div>
@@ -221,14 +223,19 @@ const styles = {
     cursor: "pointer",
     transition: "0.3s",
   },
-  closeButton: {
-    padding: "8px 16px",
+  closeButtonTop: {
+    position: "absolute",
+    top: "10px",
+    right: "10px",
+    padding: "6px 10px",
     border: "none",
     borderRadius: "5px",
     backgroundColor: "#e63946",
     color: "#fff",
     cursor: "pointer",
-    transition: "0.3s",
+    fontWeight: "bold",
+    zIndex: 10,
+    boxShadow: "0 2px 5px rgba(0,0,0,0.2)",
   },
   pageInfo: {
     fontWeight: "bold",
